@@ -18,6 +18,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TreeviewModule } from 'ngx-treeview';
+
 import { FiltersComponent } from './filters/filters.component';
 import { FactorsComponent } from './factors/factors.component';
 import { QualiexploreRoutingModule } from './qualiexplore-routing.module';
@@ -29,7 +32,9 @@ import { QualiexploreRoutingModule } from './qualiexplore-routing.module';
     CommonModule,
     QualiexploreRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    TreeviewModule.forRoot(),
+    NgbModule
   ]
 })
 export class QualiexploreModule { }
