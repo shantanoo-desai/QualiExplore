@@ -2,7 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '', redirectTo: '/qualiexplore', pathMatch: 'full'
+  },
+  {
+    path: 'qualiexplore',
+    loadChildren: './qualiexplore/qualiexplore.module#QualiexploreModule'
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
