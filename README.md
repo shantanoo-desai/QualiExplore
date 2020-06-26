@@ -17,6 +17,59 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 * [Shantanoo Desai](mailto:des@biba.uni-bremen.de)
 * [Stefan Wellsandt](mailto:wel@biba.uni-bremen.de)
 
+## Docker
+
+QualiExplore is served through `nginx` HTTP Server. See `Dockerfile` for details.
+Qualiexplore is also available on [Docker Hub](https://hub.docker.com/repository/docker/shantanoodesai/qualiexplore)
+
+### Local Development
+
+__Build Image__:
+
+```bash
+  npm run build:docker
+```
+
+__Run Image__:
+
+```bash
+  npm run start:docker
+```
+
+__Local Development Using `docker-compose`__:
+
+```yml
+version: '3.1'
+
+services:
+  qualiexplore:
+    image: 'qualiexplore'
+    build: '.'
+    ports:
+      - 3000:80
+```
+
+### Deployment
+
+1. Within `docker-compose.yml` add:
+
+  ```yml
+  version: '3.1'
+
+  services:
+    qualiexplore:
+      image: 'shantanoodesai/qualiexplore'
+      ports:
+        - 3000:80
+  ```
+
+2. Run using `docker` command:
+  ```bash
+    docker run -p 3000:80 --rm shantanoodesai/qualiexplore
+  ```
+
+
+
 ## License
 
 __Apache2.0 License__
