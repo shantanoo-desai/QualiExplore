@@ -18,12 +18,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { FiltersComponent } from './filters/filters.component';
 import { FactorsComponent } from './factors/factors.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'filters',
+        redirectTo: 'auth',
         pathMatch: 'full'
+    },
+    {
+      path: 'auth', component: AuthComponent
     },
     {
         path: 'filters',

@@ -16,18 +16,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TreeviewModule } from 'ngx-treeview';
-
 import { FiltersComponent } from './filters/filters.component';
 import { FactorsComponent } from './factors/factors.component';
 import { QualiexploreRoutingModule } from './qualiexplore-routing.module';
+import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
-  declarations: [FiltersComponent, FactorsComponent],
+  declarations: [FiltersComponent, FactorsComponent, AuthComponent],
   imports: [
     CommonModule,
     QualiexploreRoutingModule,
@@ -37,4 +36,6 @@ import { QualiexploreRoutingModule } from './qualiexplore-routing.module';
     NgbModule
   ]
 })
+
 export class QualiexploreModule { }
+
