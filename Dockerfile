@@ -17,4 +17,4 @@ COPY nginx/nginx.conf /etc/nginx/nginx.conf
 WORKDIR /usr/share/nginx/html
 COPY --from=builder /usr/src/app/dist/qualiexplore/ .
 
-CMD [ "nginx", "-g", "daemon off;" ]
+CMD [ "npm", "start" ]
