@@ -21,6 +21,8 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './qualiexplore/auth/auth.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './qualiexplore/auth/auth.guard';
+import { AuthService } from './qualiexplore/auth/auth.service';
 
 @NgModule({
   declarations: [

@@ -18,6 +18,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FactorsService } from './factors.service';
 import { TreeviewConfig, TreeviewItem, TreeItem } from 'ngx-treeview';
 import { Filter } from '../filters/model/filter.model';
+import { AuthService } from '../auth/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-factors',
@@ -46,12 +48,14 @@ export class FactorsComponent implements OnInit {
     collapseSelectedFilters = true;
 
     constructor(
-      private service: FactorsService,
-      private route: ActivatedRoute,
-      private router: Router) {
+        private service: FactorsService,
+        private route: ActivatedRoute,
+        private router: Router,
+        private authService: AuthService) {
     }
 
     ngOnInit() {
+        this.authService.autoLogin();
         this.route.queryParams.subscribe(params => {
             this.selected = JSON.parse(params.ids);
 
@@ -67,11 +71,20 @@ export class FactorsComponent implements OnInit {
                     });
                 });
             });
-            this.service.getFactors()
-                .then((items: any) => {
-                    this.items = this.parseTree([new TreeviewItem(items)]);
-                    this.countHighlightedFactors(this.items);
-                });
+            let factorsObs: Observable<any>;
+            factorsObs = this.service.getFactors();
+            factorsObs.subscribe((data: any) => {
+                console.log(data.data.factors[0]);
+                const data1 = JSON.parse(JSON.stringify(data))
+                this.items = this.parseTree([new TreeviewItem(data1.data.factors[0])]);
+                this.countHighlightedFactors(this.items);
+            })
+            // this.service.getFactors()
+            //     .then((items: any) => {
+            //         console.log(items);
+            //         this.items = this.parseTree([new TreeviewItem(items)]);
+            //         this.countHighlightedFactors(this.items);
+            //     });
         });
     }
 
@@ -139,8 +152,8 @@ export class FactorsComponent implements OnInit {
      */
     parseTree(factors: TreeviewItem[]): TreeviewItem[] {
         factors.forEach((factor: TreeviewItem) => {
-            if (factor.value !== null && factor.value.label_ids !== undefined) {
-                const labels: number[] = factor.value.label_ids;
+            if (factor.value !== null && factor.value.labelIds !== undefined) {
+                const labels: number[] = factor.value.labelIds;
                 labels.forEach(label => {
                     if (this.selected.findIndex(l => l === label) > -1) {
                         factor.value.highlighted = true;

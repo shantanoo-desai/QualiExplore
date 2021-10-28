@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'qualiexplore',
-    loadChildren: './qualiexplore/qualiexplore.module#QualiexploreModule'
+    loadChildren: () => import('./qualiexplore/qualiexplore.module').then(m => m.QualiexploreModule)
   }
 ];
 

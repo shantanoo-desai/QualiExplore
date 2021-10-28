@@ -12,7 +12,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License. -->
 
-   <ng-template #itemTemplate let-item="item" let-onCollapseExpand="onCollapseExpand" let-onCheckedChange="onCheckedChange">
+<ng-template #itemTemplate let-item="item" let-onCollapseExpand="onCollapseExpand" let-onCheckedChange="onCheckedChange">
     <div class="form-inline row-item">
         <i *ngIf="item.children" (click)="onCollapseExpand()" aria-hidden="true" class="fas mr-3" [class.fa-caret-right]="item.collapsed" [class.fa-caret-down]="!item.collapsed"></i>
         <!--checkbox -->
@@ -33,10 +33,11 @@
 
 </ng-template>
 
+<app-header></app-header>
 <div class="container mt-lg-5 mb-lg-5">
-    <h2>
+    <!-- <h2>
         <span>QualiExplore</span>
-    </h2>
+    </h2> -->
     <div class="jumbotron">
         <h3 class="display-5"><span>Step-2</span></h3>
         <p class="lead"><span>This step highlights the most relevant factors with a </span> <i class="fas fa-flag fa-1x"></i></p>
@@ -48,8 +49,7 @@
                 <li>
                     <i class="fas fa-check" *ngIf="filter['parent'] === 'Quality'"></i>
                     <i class="fas fa-bullseye" *ngIf="filter['parent']==='Goals'"></i>
-                    <i class="fas fa-info" *ngIf="filter['parent'] === 'Sources'"></i>
-                    {{filter['name']}}
+                    <i class="fas fa-info" *ngIf="filter['parent'] === 'Sources'"></i> {{filter['name']}}
                 </li>
             </ul>
         </div>

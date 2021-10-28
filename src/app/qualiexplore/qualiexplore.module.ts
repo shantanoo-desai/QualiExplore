@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpHeaders } from '@angular/common/http';
@@ -23,10 +23,14 @@ import { FiltersComponent } from './filters/filters.component';
 import { FactorsComponent } from './factors/factors.component';
 import { QualiexploreRoutingModule } from './qualiexplore-routing.module';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthService } from './auth/auth.service';
+import { HeaderComponent } from './header/header.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 @NgModule({
-  declarations: [FiltersComponent, FactorsComponent, AuthComponent],
+  declarations: [FiltersComponent, FactorsComponent, AuthComponent, HeaderComponent, LoadingSpinnerComponent],
   imports: [
     CommonModule,
     QualiexploreRoutingModule,
@@ -34,8 +38,9 @@ import { AuthComponent } from './auth/auth.component';
     FormsModule,
     TreeviewModule.forRoot(),
     NgbModule
-  ]
+  ],
+  providers: [AuthService]
 })
 
-export class QualiexploreModule { }
+export class QualiexploreModule {}
 

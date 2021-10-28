@@ -17,6 +17,9 @@ import { Component, OnInit } from '@angular/core';
 import { FiltersService } from './filters.service';
 import { Router } from '@angular/router';
 import { Filter } from './model/filter.model';
+import { AuthService } from '../auth/auth.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
     selector: 'app-filters',
@@ -29,11 +32,13 @@ export class FiltersComponent implements OnInit {
     selections: number[] = [];
     private selectionsSet: Set<number> = new Set();
     constructor(
-      private service: FiltersService,
-      private router: Router) {
+        private service: FiltersService,
+        private router: Router,
+        private authService: AuthService) {
     }
 
     ngOnInit() {
+        this.authService.autoLogin();
         // Get previously selected Filters and Selection Array
         const previousFilterSelections = sessionStorage.getItem('currentFilters');
         const previousSelectionsSet = sessionStorage.getItem('currentSelectionsSet');
@@ -51,10 +56,16 @@ export class FiltersComponent implements OnInit {
     /**
      * API call to Filter Static JSON
      */
-    showFilters() {
-        this.service.getQuestions().then((data: any) => {
-            this.filters = data.categories;
-        });
+    async showFilters() {
+        // this.service.getQuestions().then((data: any) => {
+        //     this.filters = data.categories;
+        // });
+
+        let filtersObs: Observable<any>;
+        filtersObs = this.service.getQuestions();
+        filtersObs.subscribe((data: any) => {
+            this.filters = data.data.filters[0].categories
+        })
     }
 
     /**
