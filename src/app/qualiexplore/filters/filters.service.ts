@@ -13,20 +13,18 @@
  * limitations under the License.
  */
 
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Apollo, gql } from 'apollo-angular';
-import { Filter } from './model/filter.model';
-import { map } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Apollo, gql } from 'apollo-angular'
+import { Filter } from './model/filter.model'
+import { map } from 'rxjs/operators'
+import { Subject } from 'rxjs'
 
 @Injectable()
 export class FiltersService {
-  response = new Subject<any>();
-  result : any;
-  constructor(private http: HttpClient, private apollo: Apollo) {
-
-  }
+  response = new Subject<any>()
+  result: any
+  constructor(private http: HttpClient, private apollo: Apollo) {}
 
   getQuestions() {
     // try {
@@ -37,22 +35,21 @@ export class FiltersService {
     // }
     const filtersQuery = gql`
       query {
-          filters {
-              categories {
-                  labels {
-                    checked
-                    id
-                    name
-                  }
-                  name
-              }
+        filters {
+          categories {
+            labels {
+              checked
+              id
+              name
+            }
+            name
           }
-       }`;
+        }
+      }
+    `
 
-    return this.apollo
-      .watchQuery({
-        query: filtersQuery
-      }).valueChanges;
+    return this.apollo.watchQuery({
+      query: filtersQuery,
+    }).valueChanges
   }
 }
-
