@@ -1,4 +1,4 @@
-## authngql branch details
+## Authngql Branch details
 
 The main branch of the Qualiexplore uses the JSON files located in the project to store and read the data required. This branch eliminates the use of the local data storage and uses MongoDb cloud database. 
 
@@ -21,7 +21,7 @@ Additionally, the following features have also been implemented on the Qualiexpl
 
 For this version of the Qualiexplore to work, both server and client apps has to be up and running. Also for the GraphQl to work properly, the database structure has to be created first. Please see the details in the graphql server repository on how to create and update the Mongodb cloud.
 
-Use `docke-compose up´ in this project. For the docker-compose to work '.env' file has to be present in the same directory and the DATABASE_URI has to updated with the MongoDb connection string.
+Use `docker-compose up` in this project. For the docker-compose to work '.env' file has to be present in the same directory and the DATABASE_URI has to updated with the MongoDb connection string.
 
 # QualiExplore Angular Module
 
