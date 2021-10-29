@@ -4,7 +4,7 @@ services:
 
   qualiexplore:
     ports:
-      80:80
+      - 80:80
     
     image: hrabhijith/graphene-qualiexplore:latest
   
