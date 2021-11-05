@@ -6,11 +6,32 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Node / NPM version
+
+This App will run with the following `node` and `npm` versions:
+
+    node: v12.10.0
+    npm: 6.10.3
+
+In order to use the above settings use [`nvm`](https://www.linode.com/docs/guides/how-to-install-use-node-version-manager-nvm/)
+
+Install v12.10.0 using `nvm install 12.10.0 && nvm use 12.10.0`
+
+### Install dependencies
+
+    npm install
+
+### Run Server
+
+    npm run start
+
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    npm run build
+
+will build in production mode and store the production files into `dist` directory in the root
 
 ## Contact
 
@@ -65,7 +86,7 @@ services:
 
 2. Run using `docker` command:
   ```bash
-    docker run -p 3000:80 --rm shantanoodesai/qualiexplore
+    docker run -p 3000:80 --rm shantanoodesai/qualiexplore:1.1.0
   ```
 
 
