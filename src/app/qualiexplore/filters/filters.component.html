@@ -12,8 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. -->
 
-   <div class="container mt-5">
-    <h2><span>QualiExplore</span></h2>
+<app-header></app-header>
+
+<div class="container mt-5">
+    <!-- <h2><span>QualiExplore</span></h2> -->
     <div class="mt-lg-auto jumbotron">
         <h3 class="display-5"><span>Step - 1</span></h3>
         <p class="lead">
@@ -30,7 +32,7 @@
         <div class="col-lg-4" *ngFor="let filter of filters">
 
             <h4>
-                <i class="fas fa-check" *ngIf="filter['name'] === 'Quality'"></i>
+                <i class="fas fa-check" *ngIf="filter.name === 'Quality'"></i>
                 <i class="fas fa-bullseye" *ngIf="filter['name']==='Goals'"></i>
                 <i class="fas fa-info" *ngIf="filter['name'] === 'Sources'"></i>
                 <!-- <i class="fas fa-exchange-alt" *ngIf="filter['name'] === 'Information channel'"></i> -->
