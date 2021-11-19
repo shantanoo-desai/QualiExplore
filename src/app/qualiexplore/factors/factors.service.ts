@@ -15,19 +15,58 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Apollo, gql } from 'apollo-angular';
 
 @Injectable()
 
 export class FactorsService {
+    response: any;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private apollo: Apollo) { }
 
-    async getFactors() {
-        try {
-            const response = await this.http.get('./assets/json/factors.json').toPromise();
-            return response;
-        } catch (err) {
-            return console.log(err);
-        }
+    getFactors() {
+        // try {
+        //     const response = await this.http.get('./assets/json/factors.json').toPromise();
+        //     return response;
+        // } catch (err) {
+        //     return console.log(err);
+        // }
+
+        const factorsQuery = gql`
+        query {factors{
+            checked
+            children {
+              checked
+              text
+              value {
+                description
+              }
+              children {
+                checked
+                text
+                value {
+                  description
+                }
+                children {
+                  checked
+                  text
+                  value {
+                    labelIds
+                    source
+                    description
+                  }
+                }
+              }
+            }
+            text
+            value {
+              description
+            }
+          }}`;
+
+        return this.apollo
+            .watchQuery({
+                query: factorsQuery
+            }).valueChanges;
     }
 }

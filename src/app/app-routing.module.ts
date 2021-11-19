@@ -15,15 +15,16 @@
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthComponent } from './qualiexplore/auth/auth.component';
 
 
 const routes: Routes = [
   {
-    path: '', redirectTo: '/qualiexplore/filters', pathMatch: 'full'
+    path: '', redirectTo: '/qualiexplore/auth', pathMatch: 'full'
   },
   {
     path: 'qualiexplore',
-    loadChildren: './qualiexplore/qualiexplore.module#QualiexploreModule'
+    loadChildren: () => import('./qualiexplore/qualiexplore.module').then(m => m.QualiexploreModule)
   }
 ];
 
